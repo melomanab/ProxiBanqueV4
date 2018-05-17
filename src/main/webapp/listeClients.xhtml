@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<title>Project Name</title>
+	<meta name="author" content="The Author"></meta>
+
+
+</h:head>
+
+<!-- Add 50px padding top to the body for the navbar -->
+<h:body>
+
+<!-- 	<ui:composition template="/template/layout.xhtml"> -->
+<!-- 	<ui:composition> -->
+<!-- 		<ui:define name="content"> -->
+<!-- 			<b:jumbotron> -->
+<!-- 				<b:container> -->
+
+					<!-- ==== Entete page ==== -->
+					<h1>
+						<h:outputText value="Bonjour" />
+					</h1>
+					
+					<!-- ==== Formulaire JSF (besoin pour imbriquer h:commandLink) ==== -->
+					<h:form>
+						<!-- ==== Table JSF ==== -->
+						<!-- ==== List clients ==== -->
+						<h:dataTable value="#{beanconseiller.afficherListeClients()}"
+							var="item" styleClass="order-table"
+							headerClass="order-table-header"
+							rowClasses="order-table-odd-row,order-table-even-row">
+
+
+							<h:column>
+								<!-- column header -->
+								<f:facet name="header">Nom</f:facet>
+								<!-- row record -->
+								<h:outputText value="#{item.nomClient}" />
+							</h:column>
+
+							<h:column>
+								<f:facet name="header">Prenom</f:facet>
+								<h:outputText value="#{item.prenomClient}" />
+							</h:column>
+
+							<h:column>
+								<f:facet name="header">Mail</f:facet>
+								<h:outputText value="#{item.emailClient}" />
+							</h:column>
+
+							<h:column>
+								<f:facet name="header"> Adresse </f:facet>
+								<h:outputText value="#{item.adresseClient}" />
+							</h:column>
+
+							<!-- ==== Bouton: Liste comptes client ==== -->
+							<h:column>
+								<f:facet name="header"></f:facet>
+								<h:commandButton value="Liste de comptes"
+									action="#{beanclient.afficherClient()}" />
+							</h:column>
+
+						</h:dataTable>
+
+					</h:form>
+					
+
+
+<!-- 				</b:container> -->
+<!-- 			</b:jumbotron> -->
+<!-- 		</ui:define> -->
+
+<!-- 	</ui:composition> -->
+</h:body>
+</html>

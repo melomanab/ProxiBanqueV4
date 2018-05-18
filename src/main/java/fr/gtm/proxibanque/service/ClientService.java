@@ -50,7 +50,23 @@ public class ClientService {
 			e.printStackTrace();
 		}
 		return listeClients;
+	}
+	
+	public ClientProxi createClient(ClientProxi clientProxi) {
 
+		ClientProxi clientRetour = null;
+		String envoie = null;
+		try {
+			envoie = mapper.writeValueAsString(clientProxi);
+			WebResource webResource = client.resource("http://localhost:8080/webservice_1.0/api/clientProxi");
+			ClientResponse response = webResource.type("application/json").post(ClientResponse.class, envoie);
+			retour = response.getEntity(String.class);
+			clientRetour = mapper.readValue(retour, ClientProxi.class);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return clientRetour;
 	}
 
 }

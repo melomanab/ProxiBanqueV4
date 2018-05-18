@@ -10,6 +10,11 @@ public class ClientLanceur {
 	public static void main(String[] args) {
 		ClientService service = new ClientService();
 
+		ClientProxi nouveauClient = new ClientProxi(3,"test_add","test_add","test_add","test_add");
+		nouveauClient.setIdConseiller(2);
+		service.createClient(nouveauClient);
+		
+		
 		 List<ClientProxi> listeClients = service.getAllClients(); 
 		 for (ClientProxi client : listeClients) { 
 			 System.out.println(client); 
